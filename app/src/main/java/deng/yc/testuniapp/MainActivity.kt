@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1
+package deng.yc.testuniapp
 
 import android.Manifest
 import android.content.Intent
@@ -8,27 +8,29 @@ import android.os.Environment
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.AppUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.tbruyelle.rxpermissions2.RxPermissions
-import deng.yc.testuniapp1.download.DownloadListener
-import deng.yc.testuniapp1.download.FileDownloader
-import deng.yc.testuniapp1.ui.login.LoginActivity
+import deng.yc.testuniapp.download.DownloadListener
+import deng.yc.testuniapp.download.FileDownloader
+import deng.yc.testuniapp.ui.login.LoginActivity
 import io.dcloud.feature.sdk.DCUniMPSDK
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
-
+/**
+*@author : yanc -> 大道之行
+*@Create : 2020/5/29
+*@Time : 15:32
+*@Describe ：
+**/
 class MainActivity : AppCompatActivity() {
     var fileDownloader = FileDownloader(MainActivity@this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initDownLoad()
-
-
-      var uniappBasePath =   DCUniMPSDK.getInstance().getAppBasePath(this)
-
 
         /**
          * js  方法2 ：监听回调
@@ -36,16 +38,10 @@ class MainActivity : AppCompatActivity() {
         DCUniMPSDK.getInstance().setOnUniMPEventCallBack { event, data, callback ->
             Log.d("cs", "onUniMPEventReceive    event=$event")
             //回传数据给小程序
-//            callback.invoke("fsdf")
+            callback.invoke("及时回复小程序信息")
+
+            ActivityUtils.startActivity(LoginActivity::class.java)
             //app 发送消息给小程序
-            var   appid = DCUniMPSDK.getInstance().runingAppid
-            Log.w("dyc",appid)
-                DCUniMPSDK.getInstance().sendUniMPEvent("sendMsg", "告知${ DCUniMPSDK.getInstance().runingAppid} 宿主app 已经支付成功")
-//            try {
-//                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-//            }catch (e : java.lang.Exception){
-//                Log.e("dyc",e.message)
-//            }
         }
 
         /**
@@ -59,10 +55,11 @@ class MainActivity : AppCompatActivity() {
          * "/xxx/xxx/宿主包名/files/apps/__UNI__04E3A11/www/__UNI__04E3A11.wgt包中的资源"
 
          */
-        Log.d("file  basePath ",uniappBasePath)
 
-        //组件模块
-        modle.setOnClickListener {
+        /**
+         * 组件模块 展示
+         */
+        component.setOnClickListener {
             try {
                 DCUniMPSDK.getInstance()
                     .startApp(this@MainActivity, "__UNI__04E3A11")
@@ -84,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
 
         /**
-         * app  直接操作 热更新
+         * app  直接从服务器下载wgt操作  图形操作
          */
         open_clout_wgt.setOnClickListener {
 
@@ -92,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                 .subscribe { isGrand ->
                     if (isGrand) {
                          //wgt 名称
-                        var wgtName = "__UNI__6B2D507"
+                        var wgtName = "__UNI__7F09B0A"
                         //wgt  下载路径
                         val downLoadPath = DCUniMPSDK.getInstance().getAppBasePath(this)  +wgtName + "/www/"
                         //wgt 下载后的绝对路径地址
@@ -101,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                         if (File(wgtAbsolutePath).exists()){
                             openWgt(wgtAbsolutePath,wgtName)
                         }else{
-                            fileDownloader.doowloadUniApp(wgtName,
+                            fileDownloader.doowLoadUniApp(wgtName,
                                 "https://file.zgxyzx.net/${wgtName}.wgt")
                         }
                     } else {
@@ -110,7 +107,10 @@ class MainActivity : AppCompatActivity() {
                 }
         }
 
-        //小程序 发送消息给 app
+        /**
+         *  小程序 js 回调
+         */
+
         js_callback.setOnClickListener {
             try {
                 DCUniMPSDK.getInstance()
@@ -120,7 +120,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // 颜色组件
+        /**
+         *  颜色组件展示
+          */
         colorsUI.setOnClickListener {
             try {
                 DCUniMPSDK.getInstance()
@@ -131,43 +133,17 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        //直接打开 wgt
-
-        open_wgt.setOnClickListener {
-            //D:\third-app\uniapp\app\src\main\assets
-            val wgtName = "__UNI__6B2D507"
-            var wgtPath = "/storage/emulated/0/data/user/0/${AppUtils.getAppPackageName()}/files/apps/${wgtName}/www/${wgtName}.wgt"
-            DCUniMPSDK.getInstance().releaseWgtToRunPathFromePath(
-                wgtPath
-            ) { code, pArgs ->
-                if (code == 1) { //释放wgt完成
-                    try {
-                        DCUniMPSDK.getInstance().startApp(this@MainActivity, wgtName)
-                    } catch (e: java.lang.Exception) {
-                        e.printStackTrace()
-                        Toast.makeText(this@MainActivity, "资源释放失败:${pArgs}", Toast.LENGTH_LONG).show()
-                    }
-                } else { //释放wgt失败
-                    Toast.makeText(this@MainActivity, "资源释放失败", Toast.LENGTH_SHORT).show()
-                }
-                null
-            }
-        }
-
         /***
          * 胶囊按钮回调监听
          */
         DCUniMPSDK.getInstance().setDefMenuButtonClickCallBack { id, p1 ->
             runOnUiThread {
-
-//                DCUniMPSDK.getInstance().sendUniMPEvent("sendMsg", "告知${ DCUniMPSDK.getInstance().runingAppid} 宿主app 已经支付成功")
-//                Toast.makeText(this@MainActivity, "id==$id  , 关键id :  = $p1", Toast.LENGTH_SHORT)
-//                    .show()
-
-                startActivity(Intent(this@MainActivity,LoginActivity::class.java))
+                Toast.makeText(this@MainActivity, "id==$id  , 关键id :  = $p1", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
+
 
     private fun initDownLoad() {
 
@@ -178,6 +154,10 @@ class MainActivity : AppCompatActivity() {
                     return
 
                 Log.w("file Completed",uri.path)
+
+                runOnUiThread {
+                    ToastUtils.showShort("下载完成，请打开")
+                }
             }
 
             override fun onDownloadProgress(
@@ -206,6 +186,17 @@ class MainActivity : AppCompatActivity() {
             }
             null
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        fileDownloader.registerDownloadCompleteReceiver()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fileDownloader.unRegisterDownloadCompleteReceiver()
     }
 
 

@@ -7,7 +7,7 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "deng.yc.testuniapp1"
+        applicationId "deng.yc.testuniapp"
         minSdkVersion 19 // uniapp必须是19及以上
         targetSdkVersion 26//最高28最优26 设置值域超过28可能在android10以上手机出现白屏问题。
         versionCode 1

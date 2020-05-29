@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="deng.yc.testuniapp1.MainActivity">
+    tools:context="deng.yc.testuniapp.MainActivity">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="组件功能"
+        android:text="组件功能演示"
         android:layout_margin="16dp"
-        android:id="@+id/modle"
+        android:id="@+id/component"
        />
 
     <Button
@@ -37,7 +37,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="app直接下载小程序wgt包（云端资源包 ）"
+        android:text="下载小程序wgt包（七牛下载uCharts）"
         android:layout_margin="16dp"
         android:id="@+id/open_clout_wgt"
         />
@@ -45,18 +45,11 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="小程序wgt包js 回调"
+        android:text="小程序wgt包js回调(供前端调试)"
         android:layout_margin="16dp"
         android:id="@+id/js_callback"
         />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="直接打开wgt"
-        android:layout_margin="16dp"
-        android:id="@+id/open_wgt"
-        />
 
 
 </LinearLayout>

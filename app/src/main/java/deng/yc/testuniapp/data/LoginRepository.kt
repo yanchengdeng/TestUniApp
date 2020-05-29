@@ -1,6 +1,6 @@
-package deng.yc.testuniapp1.data
+package deng.yc.testuniapp.data
 
-import deng.yc.testuniapp1.data.model.LoggedInUser
+import deng.yc.testuniapp.data.model.LoggedInUser
 
 /**
  * Class that requests authentication and user information from the remote data source and

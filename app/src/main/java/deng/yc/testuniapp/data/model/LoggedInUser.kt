@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1.data.model
+package deng.yc.testuniapp.data.model
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

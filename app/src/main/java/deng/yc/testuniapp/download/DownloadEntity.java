@@ -1,9 +1,14 @@
-package deng.yc.testuniapp1.download;
+package deng.yc.testuniapp.download;
 
 import androidx.annotation.NonNull;
 
 import java.io.File;
-
+/**
+*@Author : yc -> dadaodata
+*@Date : ${DATE}
+*@Time : ${TIME}
+*@Describe ：下载
+**/
 public class DownloadEntity {
 
     private String mimeType;

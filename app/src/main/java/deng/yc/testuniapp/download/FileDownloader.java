@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1.download;
+package deng.yc.testuniapp.download;
 
 import android.app.Activity;
 import android.app.DownloadManager;
@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -252,16 +251,13 @@ public final class FileDownloader {
         downloadFile(entity);
     }
 
-    public  void doowloadUniApp(String name, String url){
+    public  void doowLoadUniApp(String name, String url){
         String uniappBasePath =   DCUniMPSDK.getInstance().getAppBasePath(context);
         DownloadEntity entity = new DownloadEntity();
         entity.setUrl(url);
         entity.setSubPath(uniappBasePath+name+"/www/");
         entity.setTitle(name + ".wgt");
         entity.setDesc("wgt");
-//        Log.w("file  entity1 ",entity.getDestinationDirectory().getAbsolutePath());
-//        Log.w("file  entity2 ",entity.getDestinationDirectory().getPath());
-//        Log.w("file  entity3 ",entity.getSubPath());
         downloadUniApp(entity);
     }
 

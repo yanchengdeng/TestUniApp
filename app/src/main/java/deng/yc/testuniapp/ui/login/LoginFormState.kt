@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1.ui.login
+package deng.yc.testuniapp.ui.login
 
 /**
  * Data validation state of the login form.

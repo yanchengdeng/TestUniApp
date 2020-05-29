@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1
+package deng.yc.testuniapp
 
 
 import android.app.Application

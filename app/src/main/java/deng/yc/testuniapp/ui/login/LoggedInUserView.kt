@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1.ui.login
+package deng.yc.testuniapp.ui.login
 
 /**
  * User details post authentication that is exposed to the UI

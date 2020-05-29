@@ -1,13 +1,13 @@
-package deng.yc.testuniapp1.ui.login
+package deng.yc.testuniapp.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import deng.yc.testuniapp1.data.LoginRepository
-import deng.yc.testuniapp1.data.Result
+import deng.yc.testuniapp.data.LoginRepository
+import deng.yc.testuniapp.data.Result
 
-import deng.yc.testuniapp1.R
+import deng.yc.testuniapp.R
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

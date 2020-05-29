@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1.ui.login
+package deng.yc.testuniapp.ui.login
 
 import android.app.Activity
 import androidx.lifecycle.Observer
@@ -8,18 +8,14 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.blankj.utilcode.util.ActivityUtils
-import deng.yc.testuniapp1.Main2Activity
 
-import deng.yc.testuniapp1.R
-import io.dcloud.feature.sdk.DCUniMPSDK
+import deng.yc.testuniapp.R
 
 class LoginActivity : AppCompatActivity() {
 
@@ -62,7 +58,10 @@ class LoginActivity : AppCompatActivity() {
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
             }
+            setResult(Activity.RESULT_OK)
+
             //Complete and destroy login activity once successful
+            finish()
         })
 
         username.afterTextChanged {
@@ -96,9 +95,6 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
-
-       var   activity =  ActivityUtils.getTopActivity()
-        Log.w("dyc",activity.toString())
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
@@ -106,15 +102,10 @@ class LoginActivity : AppCompatActivity() {
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
         Toast.makeText(
-                applicationContext,
-        "$welcome $displayName",
-        Toast.LENGTH_LONG
+            applicationContext,
+            "$welcome $displayName",
+            Toast.LENGTH_LONG
         ).show()
-
-
-        ActivityUtils.startActivity(Main2Activity::class.java)
-
-
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {

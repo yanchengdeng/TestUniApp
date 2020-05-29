@@ -1,9 +1,9 @@
-package deng.yc.testuniapp1.ui.login
+package deng.yc.testuniapp.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import deng.yc.testuniapp1.data.LoginDataSource
-import deng.yc.testuniapp1.data.LoginRepository
+import deng.yc.testuniapp.data.LoginDataSource
+import deng.yc.testuniapp.data.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

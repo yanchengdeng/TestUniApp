@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1;
+package deng.yc.testuniapp;
 
 import android.content.Intent;
 import android.util.Log;
@@ -8,7 +8,7 @@ import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
 
-import deng.yc.testuniapp1.ui.login.LoginActivityKt;
+import deng.yc.testuniapp.ui.login.LoginActivityKt;
 
 
 public class TestModule extends WXModule {

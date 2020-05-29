@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1.ui.login
+package deng.yc.testuniapp.ui.login
 
 /**
  * Authentication result : success (user details) or error message.

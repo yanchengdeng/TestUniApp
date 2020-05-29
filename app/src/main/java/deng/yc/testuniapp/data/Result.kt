@@ -1,4 +1,4 @@
-package deng.yc.testuniapp1.data
+package deng.yc.testuniapp.data
 
 /**
  * A generic class that holds a value with its loading status.
