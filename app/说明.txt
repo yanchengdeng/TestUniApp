@@ -1,0 +1,31 @@
+密钥库类型: JKS
+密钥库提供方: SUN
+
+  storeFile file("xyzx_0503.jks")
+            storePassword "Ddzx2016...xyzx"
+            keyAlias "xyzx"
+            keyPassword "Ddzx2016...xyzx"
+
+
+//获取方法
+keytool -list -v -keystore "jsk路径"
+
+
+
+您的密钥库包含 1 个条目
+
+别名: xyzx
+创建日期: 2016-5-3
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=XiaoYuanZaiXian, OU=RD, O=Fujian?DaDaoZhiXing?Educational?Technology?Co Ltd, L=Fuzhou, ST=Fujian, C=86
+发布者: CN=XiaoYuanZaiXian, OU=RD, O=Fujian?DaDaoZhiXing?Educational?Technology?Co Ltd, L=Fuzhou, ST=Fujian, C=86
+序列号: 4d155c8a
+有效期开始日期: Tue May 03 09:50:38 CST 2016, 截止日期: Sat Apr 27 09:50:38 CST 2041
+证书指纹:
+	 MD5: FF:26:13:BC:00:6E:32:50:99:D9:85:62:72:F7:C3:E8
+	 SHA1: 58:47:7A:4A:02:EF:83:4E:3D:E7:70:6E:50:CD:C4:97:20:03:32:68
+	 SHA256: AB:CF:73:0C:70:F0:1C:71:2E:9D:9A:73:C3:F1:17:41:B7:78:66:E4:5D:D9:73:95:74:60:A5:EB:AC:13:D9:4A
+	 签名算法名称: SHA256withRSA
+	 版本: 3
